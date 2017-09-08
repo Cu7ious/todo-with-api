@@ -1,5 +1,11 @@
+import uniqid from 'uniqid'
+
 import data from '../data'
-import { getTasks, createTask } from '../lib/tasksServices'
+import {
+  remoteGetTasks,
+  remoteCreateTask,
+  remoteUpdateTask
+} from '../lib/tasksServices'
 /**
  * Ducks
  *
@@ -11,31 +17,51 @@ import { getTasks, createTask } from '../lib/tasksServices'
  * @link: https://github.com/erikras/ducks-modular-redux
  */
 
-///??????????????????????????????????????????
+// ??????????????????????????????????????????
 const TASKS_REMOTE_LOAD = 'todo/tasks/TASKS_REMOTE_LOAD'
 const loadTodos = (tasks) => ({
   type: TASKS_REMOTE_LOAD,
   payload: tasks
 })
-export const remoteFetchTasks = () => {
+export const dispatchRemoteFetchTasks = () => {
   return dispatch => {
-    getTasks()
+    remoteGetTasks()
       .then(tasks => dispatch(loadTodos(tasks)))
   }
 }
-///??????????????????????????????????????????
+// ??????????????????????????????????????????
 const TASK_REMOTE_CREATE = 'TASK_REMOTE_CREATE'
-const createTaskRemote = (tasks) => ({
+const makeTaskRemote = (tasks) => ({
   type: TASK_REMOTE_CREATE,
   payload: tasks
 })
-export const remoteCreateTask = (task) => {
+export const dispatchRemoteCreateTask = (task) => {
   return dispatch => {
-    createTask(task)
-      .then(dispatch(createTaskRemote(task)))
+    remoteCreateTask(task)
+      .then(dispatch(makeTaskRemote(task)))
   }
 }
-///??????????????????????????????????????????
+// ??????????????????????????????????????????
+const TASK_REMOTE_UPDATE = 'TASK_REMOTE_UPDATE'
+const updateTaskRemote = (tasks) => ({
+  type: TASK_REMOTE_UPDATE,
+  payload: tasks
+})
+export const dispatchRemoteUpdateTask = (id) => {
+  return (dispatch, getState) => {
+    const tasks = getState().tasks
+    console.log('tasks', tasks)
+    // const taskID = tasks.find(t => t.id === id)
+    // console.log('taskID', taskID)
+    // remoteUpdateTask(taskID)
+    //   .then(res => {
+    //     console.log('res', res)
+    //     // dispatch(updateTaskRemote(taskID))
+    //   })
+  }
+}
+// ??????????????????????????????????????????
+window.remoteUpdateTask = remoteUpdateTask
 
 // Actions
 const TASK_ADD = 'todo/tasks/TASK_ADD'
@@ -62,17 +88,20 @@ let initialState = data
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case TASK_ADD:
-      action.payload.id = state.tasks.length
+      action.payload.id = uniqid()
       return {
         ...state,
         tasks: [action.payload].concat(state.tasks)
       }
     case TASK_EDIT:
-      let tasks = [].concat(state.tasks)
-      tasks[action.payload.idx].text = action.payload.text
+    case TASK_SAVE_EDITS:
       return {
         ...state,
-        tasks
+        tasks: state.tasks.map(task => {
+          return (task.id === action.payload.id)
+            ? { ...task, attributes: {title: action.payload.title} }
+            : task
+        })
       }
     case TASK_IS_EDITING:
       let editables = []
@@ -85,18 +114,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         tasks: editables
-      }
-    case TASK_SAVE_EDITS:
-      let savedEdits = []
-      state.tasks.forEach(task => {
-        task.text = (task.id === action.payload.idx)
-          ? action.payload.text
-          : task.text
-        savedEdits.push(task)
-      })
-      return {
-        ...state,
-        tasks: savedEdits
       }
     case TASK_DELETE:
       return {
@@ -155,9 +172,9 @@ export const addTask = (val) => ({
   payload: val
 })
 
-export const editTask = (idx, text) => ({
+export const editTask = (id, title) => ({
   type: TASK_EDIT,
-  payload: {idx, text}
+  payload: {id, title}
 })
 
 export const updateTask = (idx, text) => ({
@@ -175,9 +192,9 @@ export const taskIsEditing = idx => ({
   payload: {idx}
 })
 
-export const taskSaveEdits = (idx, text) => ({
+export const taskSaveEdits = (id, title) => ({
   type: TASK_SAVE_EDITS,
-  payload: {idx, text}
+  payload: {id, title}
 })
 
 export const taskIsDone = idx => ({

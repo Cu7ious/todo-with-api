@@ -8,36 +8,39 @@ import {
   taskIsEditing,
   taskIsDone,
   taskSaveEdits,
-  remoteFetchTasks
+  dispatchRemoteFetchTasks,
+  dispatchRemoteUpdateTask
 } from '../../reducers/tasks'
 import TodoItem from './todo-item/index'
 
 const TodoList = (props) => {
-  function handleEditTask (idx, evt) {
-    props.editTask(idx, evt.target.value)
+  function handleEditTask (id, evt) {
+    props.editTask(id, evt.target.value)
   }
 
-  function handleDeleteTask (idx, evt) {
-    props.deleteTask(idx, evt.target.value)
+  function handleDeleteTask (id, evt) {
+    props.deleteTask(id, evt.target.value)
   }
 
-  function handleTaskIsEditing (idx) {
-    props.taskIsEditing(idx)
+  function handleTaskIsEditing (id) {
+    props.taskIsEditing(id)
   }
 
-  function handleTaskIsDone (idx) {
-    props.taskIsDone(idx)
+  function handleTaskIsDone (id) {
+    props.taskIsDone(id)
   }
 
-  function handleSaveEditedTask (idx, evt) {
+  function handleSaveEditedTask (id, evt) {
     if (evt.type === 'keyup') {
       if (evt.keyCode === 13 || evt.keyCode === 27) {
-        props.taskSaveEdits(idx, evt.target.value)
-        props.taskIsEditing(idx)
+        props.taskSaveEdits(id, evt.target.value)
+        props.dispatchRemoteUpdateTask(id, evt.target.value)
+        props.taskIsEditing(id)
       }
     } else {
-      props.taskSaveEdits(idx, evt.target.value)
-      props.taskIsEditing(idx)
+      props.taskSaveEdits(id, evt.target.value)
+      props.dispatchRemoteUpdateTask(id, evt.target.value)
+      props.taskIsEditing(id)
     }
   }
 
@@ -63,7 +66,6 @@ const TodoList = (props) => {
       tag='ul'
       className='list-items'
     >
-      {props.remoteFetchTasks()}
       {renderItems(filterItems(props.tasks, props.filter))}
     </Sortable>
   )
@@ -71,5 +73,13 @@ const TodoList = (props) => {
 
 export default connect(
   (state) => ({tasks: state.tasks, filter: state.filter}),
-  {editTask, deleteTask, taskIsEditing, taskIsDone, taskSaveEdits, remoteFetchTasks}
+  {
+    editTask,
+    deleteTask,
+    taskIsEditing,
+    taskIsDone,
+    taskSaveEdits,
+    dispatchRemoteFetchTasks,
+    dispatchRemoteUpdateTask
+  }
 )(TodoList)

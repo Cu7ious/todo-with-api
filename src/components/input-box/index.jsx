@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTask, taskAllDone, remoteCreateTask } from '../../reducers/tasks'
+import { addTask, taskAllDone, dispatchRemoteCreateTask } from '../../reducers/tasks'
 import { capitalize } from '../../utils'
 
 import {
@@ -20,7 +20,7 @@ const InputBox = (props) => {
         done: false,
         editing: false
       })
-      props.remoteCreateTask({
+      props.dispatchRemoteCreateTask({
         attributes: {title},
         done: false,
         editing: false
@@ -56,5 +56,5 @@ const InputBox = (props) => {
 // const mapDispatchToProps = {}// actionCreatorName
 export default connect(
   (state) => ({tasks: state.tasks}),
-  {addTask, taskAllDone, remoteCreateTask}
+  {addTask, taskAllDone, dispatchRemoteCreateTask}
 )(InputBox)
