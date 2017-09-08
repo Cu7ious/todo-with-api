@@ -1,0 +1,135 @@
+.wrapper .todo-app {
+  padding: 55px 0 0;
+  display: block;
+  text-align: center
+}
+
+.wrapper .todo-app .dynamic-block {
+  display: inline-block;
+  text-align: initial;
+  min-width: 40vw;
+  max-width: 60vw;
+  background-color: hsla(0, 0%, 100%, .8);
+  box-shadow: 0 0 4px rgba(0, 0, 0, .05), 0 4px 8px rgba(0, 0, 0, .1)
+}
+
+@media screen and (max-width:850px) {
+  .wrapper .todo-app {
+    display: block;
+    padding: 8px 5px
+  }
+  .wrapper .todo-app .dynamic-block {
+    min-width: 70vw
+  }
+}
+
+@media screen and (max-width:650px) {
+  .wrapper .todo-app {
+    display: block;
+    padding: 8px 5px
+  }
+  .wrapper .todo-app .dynamic-block {
+    min-width: 96.5vw
+  }
+  .wrapper .todo-app ul li {
+    font-size: 20px!important
+  }
+}
+
+@media screen and (max-width:400px) {
+  .wrapper .todo-app .dynamic-block {
+    min-width: 390px;
+    width: 390px
+  }
+}
+
+.wrapper .todo-app ul {
+  list-style: none;
+  padding: 0;
+  margin: 0
+}
+
+.wrapper .todo-app ul input {
+  height: 55px;
+  line-height: 40px;
+  padding: 0 0 0 60px;
+  border-top: 0;
+  border-right: 0;
+  box-shadow: 0 0 0 0;
+  border-radius: 0;
+  border-left: 0
+}
+
+.wrapper .todo-app ul input, .wrapper .todo-app ul li {
+  position: relative;
+  font-size: 30px;
+  font-weight: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, .1)
+}
+
+.wrapper .todo-app ul li {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 55px;
+  line-height: 55px
+}
+
+.wrapper .todo-app ul li.sortable-chosen {
+  cursor: move
+}
+
+.wrapper .todo-app ul li.sortable-ghost {
+  opacity: .5;
+  border: 2px dashed #000
+}
+
+.wrapper .todo-app ul li .toggle-done {
+  position: absolute;
+  color: transparent;
+  border-radius: 50px;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin: 8px 0 0 10px;
+  text-align: center;
+  line-height: 38px
+}
+
+.wrapper .todo-app ul li span {
+  padding: 0 60px;
+  width: 100%;
+  box-sizing: border-box;
+  display: block
+}
+
+.wrapper .todo-app ul li .remove {
+  color: transparent;
+  position: absolute;
+  top: 0;
+  right: 20px
+}
+
+.wrapper .todo-app ul li.item-is-done {
+  text-decoration: line-through;
+  color: #bbb
+}
+
+.wrapper .todo-app ul li:hover .remove {
+  color: rgba(181, 24, 24, .7)
+}
+
+.wrapper .todo-app ul li:hover .remove:hover {
+  color: #b51818
+}
+
+.wrapper .todo-app input {
+  outline: none;
+  font-family: Roboto, sans-serif;
+  box-sizing: border-box;
+  width: 100%
+}
+
+.wrapper .todo-app .control {
+  font-style: normal;
+  cursor: pointer
+}

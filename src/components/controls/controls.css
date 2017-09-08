@@ -1,0 +1,62 @@
+.wrapper .todo-app .filters-block-wrapper {
+  padding: 20px;
+}
+
+.wrapper .todo-app .filters-block-wrapper .filters-block {
+  display: inline-block;
+  min-width: 200px
+}
+.wrapper .todo-app .filters-block-wrapper .filters-block .btn-toolbar {
+  display: inline-block;
+}
+
+.wrapper .todo-app .filters-block-wrapper .filters-block button {
+  text-align: center;
+  margin: 0 3px;
+  padding: 10px;
+  border: 0;
+  background-color: #d3d3d3;
+  cursor: pointer;
+  outline: none;
+  background-color: #fff;
+  transition: all .9s cubic-bezier(.23, 1, .32, 1) 0ms;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .117647), 0 1px 4px rgba(0, 0, 0, .117647);
+  border-radius: 2px
+}
+
+.filters-block-wrapper .filters-block .btn-toolbar button.active {
+  background-color: #605eff;
+  color: #fff
+}
+
+.filters-block-wrapper button.btn:focus {
+  outline: none;
+}
+
+.wrapper .todo-app .filters-block-wrapper span {
+  font-size: 14px;
+  line-height: 35px;
+  color: #bbb
+}
+
+@media screen and (max-width:500px) {
+  .wrapper .todo-app .filters-block-wrapper span {
+    font-size: 11px
+  }
+}
+
+.wrapper .todo-app .filters-block-wrapper .btn-link {
+  font-size: 14px;
+  color: #bbb;
+  transition: color .3s linear
+}
+
+.wrapper .todo-app .filters-block-wrapper a:hover {
+  color: #3d4255
+}
+
+@media screen and (max-width:500px) {
+  .wrapper .todo-app .filters-block-wrapper a {
+    font-size: 11px
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "data": [
+    {"id": "0", "attributes": {"title": "Wake up!"}, "editing": false, "done": false},
+    {"id": "1", "attributes": {"title": "300 Pushups"}, "editing": false, "done": false},
+    {"id": "2", "attributes": {"title": "100 Squats"}, "editing": false, "done": false},
+    {"id": "3", "attributes": {"title": "Shower"}, "editing": false, "done": false}
+  ]
+}

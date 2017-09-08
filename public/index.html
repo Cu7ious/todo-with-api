@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <!-- <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/main.css"> -->
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body style="display: none">
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <header class="app-main-header">
+
+      <h1 class="column" title="React.js based Classic TodoMVC App">
+        <a id="app-main-nav-button" href="#"></a>
+        <svg width="27px" height="20px" viewBox="0 0 27 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="cu7io.us" transform="translate(-396.000000, -3254.000000)" fill="#FFFFFF">
+                <polygon id="Polygon-1" transform="translate(409.502930, 3263.995337) scale(1, -1) translate(-409.502930, -3263.995337) " points="406.412678 3254.8501 422.207764 3269.49995 418.511719 3273.14058 406.412678 3261.72944 400.39917 3267.03779 396.798096 3263.45283"></polygon>
+              </g>
+          </g>
+        </svg>
+        <span>Classic TodoMVC</span>
+      </h1>
+
+      <div class="column">
+        <div class="by-cu7ious">
+          <a target="_blank" href="//cu7io.us/">
+            <img src="%PUBLIC_URL%/assets/svg/by-Cu7ious-watermark-white.svg" alt="by-Cu7ious">
+          </a>
+        </div>
+      </div>
+      <div class="column">
+        <a class="github-badge" target="_blank" title="See more on GitHub" href="//github.com/Cu7ious/">
+          <img src="%PUBLIC_URL%/assets/svg/github.svg" alt="Github logo">
+        </a>
+      </div>
+    </header>
+
+    <aside id="main-sidebar">
+      <div class="header-section">
+        <h2>Classic ToDo App</h2>
+        <h3>with React and Redux</h3>
+        <button>⨯</button>
+      </div>
+      <section class="container-fluid">
+        <div class="row">
+          <h4>Product requirements</h4>
+          <ul>
+            <li>Postman Collection as API server</li>
+            <li>A simple TODO application that allows to</li>
+            <ul>
+              <li>Add new task</li>
+              <li>Edit existing task</li>
+              <li>List all tasks</li>
+              <li>Delete existing task</li>
+            </ul>
+          </ul>
+          <h4>Code requirements</h4>
+          <ul>
+            <li>Prefer the jsx extension over capital letters</li>
+            <li>One react component per file</li>
+            <li>Avoid large render methods</li>
+            <li>Test your code very extensively</li>
+          </ul>
+          <h4>Libraries</h4>
+          <ul>
+            <li>React</li>
+            <li>Redux (with <a href="//github.com/erikras/ducks-modular-redux">Ducks</a>)</li>
+            <li>Webpack</li>
+            <li>Babel</li>
+            <li>Jest</li>
+            <li>Bootstrap</li>
+          </ul>
+        </div>
+      </section>
+      <footer class="main-footer">
+        <p>Designed &amp; coded with &hearts;
+          <a target="_blank" href="//cu7io.us/">
+            <img src="%PUBLIC_URL%/assets/svg/by-Cu7ious-watermark-black.svg" alt="by-Cu7ious">
+          </a>
+        </p>
+
+      </footer>
+    </aside>
+    <div id="magnet-overlay"></div>
+
+    <div class="wrapper">
+      <main id="root"></main>
+    </div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
