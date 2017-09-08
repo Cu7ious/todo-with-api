@@ -14,16 +14,9 @@ import './input-box.css'
 const InputBox = (props) => {
   function handleAddTask (e) {
     if (e.keyCode === 13 && e.target.value) {
-      const title = capitalize(e.target.value)
-      props.addTask({
-        attributes: {title},
-        done: false,
-        editing: false
-      })
       props.dispatchRemoteCreateTask({
-        attributes: {title},
-        done: false,
-        editing: false
+        attributes: {title: capitalize(e.target.value)},
+        done: false
       })
       e.target.value = ''
     }

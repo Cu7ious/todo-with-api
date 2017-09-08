@@ -2,15 +2,15 @@
 import store from '../store'
 import { addTask } from '../reducers/tasks'
 
-export const remoteGetTasks = () => {
-  return window.fetch('//dev3.showsofa.com:3010/api/v1/tasks')
+export const handleRemoteFetchTags = () => {
+  return window.fetch('//dev3.showsofa.com:3010/api/v1/tags')
     .then(res => res.json())
 }
 
 export const remoteCreateTask = (task) => {
   // task.id = uniqid()
-  task.type = 'tasks'
-  return window.fetch('//dev3.showsofa.com:3010/api/v1/tasks', {
+  task.type = 'tags'
+  return window.fetch('//dev3.showsofa.com:3010/api/v1/tags', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -25,9 +25,9 @@ export const remoteCreateTask = (task) => {
 }
 
 export const remoteUpdateTask = (task) => {
-  task.type = 'tasks'
+  task.type = 'tags'
   // return window.fetch(`//localhost:8080/data/${task.id}`, {
-  return window.fetch(`//dev3.showsofa.com:3010/api/v1/tasks/${task.id}`, {
+  return window.fetch(`//dev3.showsofa.com:3010/api/v1/tags/${task.id}`, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json',
@@ -39,7 +39,7 @@ export const remoteUpdateTask = (task) => {
 }
 
 export const remoteDeleteTask = (id) => {
-  return window.fetch(`//dev3.showsofa.com:3010/api/v1/tasks/${id}`, {
+  return window.fetch(`//dev3.showsofa.com:3010/api/v1/tags/${id}`, {
     method: 'DELETE',
     headers: {
       'Accept': 'application/json',

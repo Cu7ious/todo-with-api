@@ -51,9 +51,3 @@ class App extends Component {
 }
 
 export default App
-// const mapStateToProps = (state) => state
-// const mapDispatchToProps = {}// actionCreatorName
-// export default connect(
-//   (state) => state,
-//   {}
-// )(App)

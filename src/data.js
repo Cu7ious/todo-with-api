@@ -5,5 +5,7 @@ export default {
     COMPLETED: 'completed'
   },
   filter: 'all',
-  tasks: []
+  editing: null,
+  tasks: [],
+  includes: []
 }
